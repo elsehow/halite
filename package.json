@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "homepage": "https://bitbucket.org/elsehow/dcom2#readme",
+  "license": "BSD-2-Clause",
   "dependencies": {
     "tweetnacl": "^0.14.1",
     "tweetnacl-util": "^0.13.3"

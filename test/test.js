@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape')
-var nl = require('../src/index.js')
+var nl = require('..')
 
 // encrypt / decrypt functions ----------------
 
