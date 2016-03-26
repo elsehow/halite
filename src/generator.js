@@ -1,24 +1,25 @@
 'use strict';
 
+var partial = require('partial')
+
 // helper functions -----------------------------------
 
 function encrypt (pubkey, json) {
-}
-
-function decrypt (privkey, ciphertext) {
+  return json
 }
 
 // data structures -------------------------------------
 
-function new_thread (cleartext, pubkey) {
+function new_thread (my_pubkey, title, cleartext) {
   return {
     type: 'new-thread',
+    title: title,
     cleartext: cleartext,
-    pubkey: pubkey,
+    pubkey: my_pubkey,
   }
 }
 
-function reply (thread_key, cleartext, my_pubkey, their_pubkey) {
+function reply (my_pubkey, their_pubkey, thread_key, cleartext) {
   // generate cipher text to ship
   let ciphertext = encrypt(their_pubkey, {
     cleartext: cleartext,
@@ -33,7 +34,9 @@ function reply (thread_key, cleartext, my_pubkey, their_pubkey) {
 }
 
 // export 2 functions for generating messages
-module.exports = {
-  new_thread: new_thread,
-  reply: reply,
+module.exports = (my_pubkey) => {
+  return {
+    new_thread: partial(new_thread, my_pubkey),
+    reply: partial(reply, my_pubkey)
+  }
 }

@@ -4,6 +4,11 @@ var Kefir = require('kefir')
 
 // helper functions -----------------------------------
 
+function decrypt (privkey, ciphertext) {
+  return ciphertext
+}
+
+
 function mtype (t) {
   return (message) => {
     return message.value.type === t
@@ -24,12 +29,12 @@ function accum (acc, cur) {
 function threadReplies (threads, replies) {
   return threads.map(t => {
     var rs = replies.filter(replyTo(t.key))
-    rs.push(t)
+    rs.unshift(t)
     return rs
   })
 }
 
-module.exports = (cb) => {
+module.exports = (privkey, cb) => {
 
   // a ref to the function we return
   var add = null

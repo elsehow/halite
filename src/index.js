@@ -1,13 +1,52 @@
 'use strict';
 
-// export a function that takes a callback
-// the callback is called on the new app state,
-// whenever this app state is updated
-// the function returns a method add() for adding new messages
+var nacl         = require('tweetnacl')
+nacl.util        = require('tweetnacl-util')
 
-module.exports = (cb) => {
-  return {
-    receive: require('./receiver.js')(cb),
-    generate: require('./generator.js'),
-  }
+// generate a keypair
+const keypair = nacl.box.keyPair
+
+// public key of a keypair
+const pk = (kp) => {
+  return kp.publicKey
 }
+
+// secret key of a keypair
+const sk = (kp) => {
+  return kp.secretKey
+}
+
+// generate a nonce (buffer of length 24)
+const makenonce = () => {
+  return nacl.randomBytes(24)
+}
+
+const encrypt = (str, nonce, pk, sk) => {
+  var buff = nacl.util.decodeUTF8(str)
+  return nacl.box(buff, nonce, pk, sk)
+}
+
+const decrypt = (buff, nonce, pk, sk) => {
+  var arr = nacl.box.open(buff, nonce, pk, sk)
+  return nacl.util.encodeUTF8(arr)
+}
+
+module.exports = {
+  keypair: keypair,
+  pk: pk,
+  sk: sk,
+  makenonce: makenonce,
+  encrypt: encrypt,
+  decrypt: decrypt,
+}
+
+//module.exports = (log, cb) => {
+//
+//  return {
+//    post: (pubkey, title, body, cb) => {
+//    },
+//
+//    reply: (to, keypair, reply, cb) => {
+//    },
+//  }
+//}
