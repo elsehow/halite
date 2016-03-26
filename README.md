@@ -1,6 +1,6 @@
 # halite
 
-a small wrapper for encrypting and decrypting strings with tweetnacl
+encrypt and decrypt UTF-8 strings with tweetnacl
 
 ## usage 
 
@@ -14,9 +14,9 @@ var n = halite.makenonce()
 var kp1 = halite.keypair()
 var kp2 = halite.keypair()
 // kp1 encrypts a message for kp2
-var enc = halite.encrypt(message, n, nl.pk(kp2), nl.sk(kp1))
+var enc = halite.encrypt(message, n, halite.pk(kp2), halite.sk(kp1))
 // kp2 decrypts the message with kp1's public key
-var dec = halite.decrypt(enc, n, nl.pk(kp1), nl.sk(kp2))
+var dec = halite.decrypt(enc, n, halite.pk(kp1), halite.sk(kp2))
 console.log(dec)
 // > 'hi guys'
 ```

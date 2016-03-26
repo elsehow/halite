@@ -1,7 +1,7 @@
 {
   "name": "halite",
-  "version": "1.0.0",
-  "description": "a small wrapper for encrypting and decrypting strings with tweetnacl",
+  "version": "1.0.4",
+  "description": "encrypt and decrypt UTF-8 strings with tweetnacl",
   "main": "index.js",
   "scripts": {
     "test": "tape test/test.js | tap-spec",
@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/elsehow/dcom2.git"
+    "url": "git+ssh://git@github.com/elsehow/halite.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/elsehow/dcom2#readme",
+  "homepage": "https://github.com/elsehow/halite",
   "license": "BSD-2-Clause",
   "dependencies": {
     "tweetnacl": "^0.14.1",
