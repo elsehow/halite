@@ -30,3 +30,13 @@ test('we can encrypt + decrypt something', t => {
   t.deepEquals(dec, message, 'we encrypted and decrypted a message.')
   t.end()
 })
+
+test('we can sign + verify something', t => {
+  var message = 'hi guys'
+  var kp1 = nl.signKeypair()
+  var kp2 = nl.signKeypair()
+  var signed = nl.sign(message, nl.sk(kp1))
+  var ver = nl.verify(signed, nl.pk(kp1))
+  t.deepEqual(ver,message)
+  t.end()
+})
