@@ -75,7 +75,7 @@ JSON.parse(JSON.stringify(a)) === a
 
 // but this works!!
 var overWire = JSON.stringify(halite.serialize(a)) 
-halite.deserialize(JSON.parse(a)) === a
+halite.deserialize(JSON.parse(overWire)) === a
 // > true
 ```
 ## developing
