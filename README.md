@@ -1,6 +1,6 @@
 # halite
 
-encrypt and decrypt UTF-8 strings with tweetnacl
+encrypt and decrypt UTF-8 strings with [tweetnacl](https://github.com/dchest/tweetnacl-js)
 
 ## usage 
 
@@ -20,20 +20,12 @@ var dec = halite.decrypt(enc, n, halite.pk(kp1), halite.sk(kp2))
 console.log(dec)
 // > 'hi guys'
 ```
-
-## api
+ 
+## encrypt / decrypt api
 
 ### halte.keypair()
 
 generate a keypair
-
-### halite.pk(kp)
-
-get the public key of a keypair `kp`
-
-### halite.sk(kp)
-
-get the secret key of a keypair `kp`
 
 ### halite.makenonce()
 
@@ -46,6 +38,31 @@ returns encrypted message as a Uint8Array
 ### halite.encrypt(arr, nonce, pubkey, secretkey)
 
 returns a string. arr should be a Unit8Array
+
+## sign / verify api
+
+### halite.signKeypair()
+
+generate a keypair for signing
+
+### sign(str, sk)
+
+returns signed message as a Uint8Array
+
+### verify(arr, pk)
+
+returns a clertext message if arr (a Uint8Arr) is signed from pk. returns `null` if validation fails.
+
+### helper functions
+
+### halite.pk(kp)
+
+get the public key of a keypair `kp`
+
+### halite.sk(kp)
+
+get the secret key of a keypair `kp`
+
 
 ## developing
 

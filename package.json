@@ -1,6 +1,6 @@
 {
   "name": "halite",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "encrypt and decrypt UTF-8 strings with tweetnacl",
   "main": "index.js",
   "scripts": {
