@@ -40,3 +40,15 @@ test('we can sign + verify something', t => {
   t.deepEqual(ver,message)
   t.end()
 })
+
+test('we can serialize + stringify => parse + deserialize uart buffers', t => {
+  // this doesnt work!
+  var a= new Uint8Array([1, 2,3])
+  // but this works!!
+  var overWire = JSON.stringify(nl.serialize(a))
+  var received = nl.deserialize(JSON.parse(overWire))
+  t.deepEqual(received, a, 'package does')
+  t.end()
+})
+
+

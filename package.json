@@ -1,6 +1,6 @@
 {
   "name": "halite",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "encrypt and decrypt UTF-8 strings with tweetnacl",
   "main": "index.js",
   "scripts": {
@@ -15,12 +15,13 @@
     "url": "git+ssh://git@github.com/elsehow/halite.git"
   },
   "author": "",
-  "license": "ISC",
-  "homepage": "https://github.com/elsehow/halite",
   "license": "BSD-2-Clause",
+  "homepage": "https://github.com/elsehow/halite",
   "dependencies": {
+    "json-buffer": "^2.0.11",
     "tweetnacl": "^0.14.1",
-    "tweetnacl-util": "^0.13.3"
+    "tweetnacl-util": "^0.13.3",
+    "typedarray-to-buffer": "^3.1.2"
   },
   "devDependencies": {
     "npm-watch": "^0.1.1",

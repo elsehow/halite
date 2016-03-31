@@ -2,6 +2,8 @@
 
 var nacl         = require('tweetnacl')
 nacl.util        = require('tweetnacl-util')
+var jsonb        = require('json-buffer')
+var toBuffer     = require('typedarray-to-buffer')
 
 // generate a keypair
 const keypair = nacl.box.keyPair
@@ -43,10 +45,20 @@ const verify = (buff, pk) => {
   return nacl.util.encodeUTF8(arr)
 }
 
+const serialize = (u8a) => {
+  return jsonb.stringify(toBuffer(u8a))
+}
+
+const deserialize = (str) => {
+  return new Uint8Array(jsonb.parse(str))
+}
+
 module.exports = {
   // util
   pk: pk,
   sk: sk,
+  serialize: serialize,
+  deserialize: deserialize,
   // encrypt
   keypair: keypair,
   makenonce: makenonce,

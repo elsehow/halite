@@ -63,7 +63,21 @@ get the public key of a keypair `kp`
 
 get the secret key of a keypair `kp`
 
+### halite.serialize(u8a) / halite.deserialize(arr)
 
+converts u8a to str and back again. this is convenient for seding uint8arrays over the wire. e.g.,
+
+```javascript
+// this doesnt work!
+var a= new Uint8Array([1, 2,3])
+JSON.parse(JSON.stringify(a)) === a
+// > false
+
+// but this works!!
+var overWire = JSON.stringify(halite.serialize(a)) 
+halite.deserialize(JSON.parse(a)) === a
+// > true
+```
 ## developing
 
 to run the tests
